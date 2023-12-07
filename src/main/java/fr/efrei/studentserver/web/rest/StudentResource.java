@@ -1,10 +1,11 @@
 package fr.efrei.studentserver.web.rest;
 
 import fr.efrei.studentserver.domain.Student;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import fr.efrei.studentserver.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -12,9 +13,26 @@ import java.util.List;
 @RequestMapping("/api")
 public class StudentResource {
 
+    public final StudentService studentService;
+
+    public StudentResource(StudentService studentService) {
+        this.studentService = studentService;
+    }
+    //Get
+    @GetMapping("/students")
+    public List<Student> getStudents(){
+        return studentService.findAll();
+    }
+
     @GetMapping("/students/{id}")
     public Student getStudents(@PathVariable Integer id){
-        Student student = new Student(id,"John",20);
-        return student;
+        return studentService.findById(id);
+    }
+
+    //Post
+    @PostMapping("/students")
+    public ResponseEntity<Student> createStudent(@RequestBody Student student){
+        Student createdStudent = studentService.create(student.getName(), student.getAge());
+        return new ResponseEntity<>(createdStudent, HttpStatus.CREATED);
     }
 }

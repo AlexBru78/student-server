@@ -1,6 +1,6 @@
 DELETE FROM student;
-INSERT INTO student (id, name, age) VALUES (1, 'Alex', 60);
-INSERT INTO student (id, name, age) VALUES (2, 'Ethan', 23);
-INSERT INTO student (id, name, age) VALUES (3, 'Pierre', 47);
-INSERT INTO student (id, name, age) VALUES (4, 'Xavier', 35);
-INSERT INTO student (id, name, age) VALUES (5, 'Antoine', 15);
+INSERT INTO student (name, age) VALUES ('Alex', 60);
+INSERT INTO student (name, age) VALUES ('Ethan', 23);
+INSERT INTO student (name, age) VALUES ('Pierre', 47);
+INSERT INTO student (name, age) VALUES ('Xavier', 35);
+INSERT INTO student (name, age) VALUES ('Antoine', 15);
