@@ -42,4 +42,11 @@ public class StudentResource {
         Student updatedStudent = studentService.update(id, student.getName(), student.getAge());
         return new ResponseEntity<>(updatedStudent, HttpStatus.OK);
     }
+
+    //Delete
+    @DeleteMapping("/students/{id}")
+    public ResponseEntity<Student> deleteStudent(@PathVariable Integer id){
+        studentService.delete(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }

@@ -44,4 +44,8 @@ public class StudentService {
             return null;
         }
     }
+
+    public void delete(Integer id) {
+        studentRepository.deleteById(id);
+    }
 }
