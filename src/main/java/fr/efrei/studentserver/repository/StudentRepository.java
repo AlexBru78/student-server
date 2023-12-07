@@ -12,4 +12,5 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     List<Student> findAll();
     Student findById(int id);
     Student save(Student student);
+
 }

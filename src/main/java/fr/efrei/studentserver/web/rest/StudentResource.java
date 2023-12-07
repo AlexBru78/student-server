@@ -35,4 +35,11 @@ public class StudentResource {
         Student createdStudent = studentService.create(student.getName(), student.getAge());
         return new ResponseEntity<>(createdStudent, HttpStatus.CREATED);
     }
+
+    //Put
+    @PutMapping("/students/{id}")
+    public ResponseEntity<Student> updateStudent(@PathVariable Integer id, @RequestBody Student student){
+        Student updatedStudent = studentService.update(id, student.getName(), student.getAge());
+        return new ResponseEntity<>(updatedStudent, HttpStatus.OK);
+    }
 }
